@@ -1,0 +1,30 @@
+{
+  "name": "student",
+  "version": "1.0.0",
+  "description": "student portal.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "start": "gulp scripts && node server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Manoj-kushwah/angularjs_gulp_app.git"
+  },
+  "author": "manojkushwah58@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Manoj-kushwah/angularjs_gulp_app/issues"
+  },
+  "homepage": "https://github.com/Manoj-kushwah/angularjs_gulp_app#readme",
+  "devDependencies": {
+    "angular": "^1.7.8",
+    "bootstrap": "^3.4.1",
+    "express": "^4.17.1",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-uglify": "^3.0.2",
+    "jquery": "^3.4.1"
+  }
+}

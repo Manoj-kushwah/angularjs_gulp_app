@@ -1,0 +1,160 @@
+<div navbar=""></div>
+<div>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Bootstrap Tutorial</h1>
+            <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing
+                responsive, mobile-first projects on the web.</p>
+        </div>
+
+        <div class="container">
+            <div class="row text-bold">
+                <div class="col-sm-3" ng-click="userListSortBy('firstName')">
+                    Name
+                </div>
+                <div class="col-sm-3" ng-click="userListSortBy('email')">
+                    Email
+                </div>
+                <div class="col-sm-3" ng-click="userListSortBy('dob')">
+                    Dob
+                </div>
+                <div class="col-sm-3">
+                    Options <span data-target="#createUser" data-toggle="modal">+</span>
+                </div>
+            </div>
+            <div class="row" ng-repeat="user in userList | orderBy: userSortBy" style="margin-bottom: 5px;">
+                <div class="col-sm-3">
+                    {{user.getFirstName()+' '+user.getLastName()}}
+                </div>
+                <div class="col-sm-3">
+                    {{user.getEmail()}}
+                </div>
+                <div class="col-sm-3">
+                    {{user.getDob() | date}}
+                </div>
+                <div class="col-sm-3">
+                    <div class="btn-group">
+                        <span class="btn btn-xs btn-info" ng-click="viewDetails(user)" data-toggle="modal" data-target="#myModal">View</span>
+                        <span class="btn btn-xs btn-primary">Edit</span>
+                        <span class="btn btn-xs btn-danger" ng-click="deleteUser(user)">Delete</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Modal Header</h4>
+                        </div>
+                        <div class="modal-body">
+                            <table ng-if="userDetails" class="table">
+                                <tr>
+                                    <th colspan="10">
+                                        User details
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td><b>Name</b></td>
+                                    <td>{{userDetails.firstName+' '+userDetails.lastName}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Email</b></td>
+                                    <td>{{userDetails.email}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Gender</b></td>
+                                    <td>{{userDetails.gender}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Dob</b></td>
+                                    <td>{{userDetails.dob | date}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Role</b></td>
+                                    <td>{{userDetails.role}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="createUser" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Create user</h4>
+                        </div>
+                        <div class="modal-body">
+                            <table ng-if="newUser" class="table">
+                                <tr>
+                                    <td><b>First Name</b></td>
+                                    <td><input type="text" ng-model="newUser.firstName" class="form-control" ></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Last Name</b></td>
+                                    <td><input type="text" ng-model="newUser.lastName" class="form-control" ></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Email</b></td>
+                                    <td><input type="text" ng-model="newUser.email" class="form-control" ></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Gender</b></td>
+                                    <td>
+                                        <select ng-model="newUser.gender" class="form-control">
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><b>Dob</b></td>
+                                    <td><input type="text" ng-model="newUser.dob" class="form-control" ></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Role</b></td>
+                                    <td>
+                                        <select ng-model="newUser.role" class="form-control">
+                                            <option value="1">Admin</option>
+                                            <option value="2">User</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input type="submit" value="Submit" ng-click="addNewUser()" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
